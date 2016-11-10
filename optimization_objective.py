@@ -1,21 +1,19 @@
 
 # After several motivational lectures, in a lecture titled "Collaborative Filtering Algorithm," at 1:10 Ng reveals
-# his optimization objective for collaborative filtering.
+# his optimization objective for collaborative filtering. However, he then simplifies it by having x and theta be
+# n-dimensional vectors (where n is the number of features), rather than n+1 dimensional vectors. This leads to a
+# simplification discussed in the video about 5:45.
 
-# In this file, we implement the optimization objective, which I will call optimization_objective. (Ng calls it J.)
+# In this file, we implement optimization_objective. (Ng calls it J.)
 
 
-# This function does a sum over k from 0 to n (by default) or a sum over k from 1 to n if toss_zeroth is True.
-def inner_product(v1, v2, toss_zeroth=False):
+def inner_product(v1, v2):
 
     assert len(v1) == len(v2)
 
     result = 0.0
 
     for idx in range(len(v1)):
-        if idx == 0 and toss_zeroth:
-            continue
-
         result += v1[idx] * v2[idx]
 
     return result
@@ -37,7 +35,7 @@ def make_optimization_objective(lamb, reviews):
 
         for review in reviews:
             i = review.movie
-            j = review.person
+            j = review.user
             y_i_j = review.rating
 
             x_i = x_list[i]
@@ -48,10 +46,10 @@ def make_optimization_objective(lamb, reviews):
             first_sum += delta * delta
 
         for x in x_list:
-            second_sum += inner_product(x, x, toss_zeroth=True)
+            second_sum += inner_product(x, x)
 
         for theta in theta_list:
-            third_sum += inner_product(theta, theta, toss_zeroth=True)
+            third_sum += inner_product(theta, theta)
 
         return (first_sum + lamb * second_sum + lamb * third_sum) / 2.0
 

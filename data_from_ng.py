@@ -4,6 +4,8 @@ from collections import namedtuple
 N_U = 4
 # Number of Movies
 N_M = 5
+# Number of Features
+N = 2
 
 # In Ng's notation (see lecture titled "Content Based Recommendations" at 06:55):
 
@@ -15,12 +17,12 @@ N_M = 5
 # theta[j] is a feature affinity vector for user j (Ng calls the feature affinity vector "parameter vector").
 # Personally, I find "parameter vector" a bit vague, since both the theta's and the x's are parameters vectors.
 
-MovieReview = namedtuple("MovieReview", "movie person rating")
+MovieReview = namedtuple("MovieReview", "movie user rating")
 
 # This data is from Ng's course (Lecture 98, 00:24):
 
 MOVIES = ["Love at Last", "Romance Forever", "Cute Puppies of Love", "Nonstop Car Chases", "Swords vs. Karate"]
-PEOPLE = ["Alice", "Bob", "Carol", "Dave"]  # Ng's reviewers are numbered 1 to 4. Ours will be numbered 0 to 3.
+USERS = ["Alice", "Bob", "Carol", "Dave"]  # Ng's reviewers are numbered 1 to 4. Ours will be numbered 0 to 3.
 
 REVIEWS = [
     # Alice has reviewed four of the five movies.
