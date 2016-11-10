@@ -15,9 +15,6 @@ N_M = 5
 # theta[j] is a feature affinity vector for user j (Ng calls the feature affinity vector "parameter vector").
 # Personally, I find "parameter vector" a bit vague, since both the theta's and the x's are parameters vectors.
 
-# x[i] is a feature vector for user i
-
-
 MovieReview = namedtuple("MovieReview", "movie person rating")
 
 # This data is from Ng's course (Lecture 98, 00:24):
