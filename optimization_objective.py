@@ -7,18 +7,6 @@
 # In this file, we implement optimization_objective. (Ng calls it J.)
 
 
-def inner_product(v1, v2):
-
-    assert len(v1) == len(v2)
-
-    result = 0.0
-
-    for idx in range(len(v1)):
-        result += v1[idx] * v2[idx]
-
-    return result
-
-
 # As is so often the case in these optimization problems, I will make a function that returns optimization_objective,
 # rather than defining optimization_objective directly. This is my way of encapsulating that the function is best
 # defined with reviews in its enclosing scope. Globals are messy. Long argument lists are also messy.
