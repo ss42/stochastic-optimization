@@ -18,7 +18,7 @@ def simultaneous_perturbation(optimization_objective, x_vector, theta_vector, x_
     # This is what Spall, has in equation 6.6, in its last form. This is what appears out front.
     prefactor = (optimization_objective_plus - optimization_objective_minus) / 2.0
 
-    gradient_x = tuple([prefactor / x for x in x_perturbation])
-    gradient_theta = tuple([prefactor / theta for theta in theta_perturbation])
+    gradient_x = [tuple([prefactor / tuple_component for tuple_component in x]) for x in x_perturbation]
+    gradient_theta = [tuple([prefactor / tuple_component for tuple_component in theta]) for theta in theta_perturbation]
 
     return gradient_x, gradient_theta

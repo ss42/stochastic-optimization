@@ -1,4 +1,6 @@
 
+from tuple_operations import tuple_inner_product
+
 # After several motivational lectures, in a lecture titled "Collaborative Filtering Algorithm," at 1:10 Ng reveals
 # his optimization objective for collaborative filtering. However, he then simplifies it by having x and theta be
 # n-dimensional vectors (where n is the number of features), rather than n+1 dimensional vectors. This leads to a
@@ -29,15 +31,15 @@ def make_optimization_objective(lamb, reviews):
             x_i = x_list[i]
             theta_j = theta_list[j]
 
-            delta = inner_product(theta_j, x_i) - y_i_j
+            delta = tuple_inner_product(theta_j, x_i) - y_i_j
 
             first_sum += delta * delta
 
         for x in x_list:
-            second_sum += inner_product(x, x)
+            second_sum += tuple_inner_product(x, x)
 
         for theta in theta_list:
-            third_sum += inner_product(theta, theta)
+            third_sum += tuple_inner_product(theta, theta)
 
         return (first_sum + lamb * second_sum + lamb * third_sum) / 2.0
 
