@@ -2,6 +2,8 @@ from data_from_ng import REVIEWS
 
 from optimization_objective import make_optimization_objective
 
+from random import seed
+
 # In simultaneous_perturbation.py, you can implement Spall's algorithm.
 #
 # Alternatively, you can use Ng's method for calculating subsequent guesses as discussed in README.txt
@@ -17,4 +19,5 @@ def optimize_ng_example():
 
 
 if __name__ == "__main__":
+    seed("Let's make this reproducible, eh?")
     optimize_ng_example()
